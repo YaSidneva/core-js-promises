@@ -57,12 +57,7 @@ function getPromiseResult(source) {
  * [Promise.reject(1), Promise.reject(2), Promise.reject(3)]    => Promise rejected
  */
 function getFirstResolvedPromiseResult(promises) {
-  return new Promise((resolve, reject) => {
-    promises.forEach((promise) => {
-      promise.then(resolve).catch(() => { });
-    });
-    setTimeout(() => reject(new Error('All promises were rejected')), 0);
-  });
+  throw new Error('Not implemented');
 }
 
 /**
@@ -85,19 +80,7 @@ function getFirstResolvedPromiseResult(promises) {
  * [promise3, promise4, promise6] => Promise rejected with 6
  */
 function getFirstPromiseResult(promises) {
-  return new Promise((resolve, reject) => {
-    Promise.all(
-      promises.map((promise) => promise.catch((error) => error)))
-      .then(values => {
-        const firstResolved = values.find(value => !(value instanceof Error));
-        if (firstResolved !== undefined) {
-          resolve(firstResolved);
-        } else {
-          const firstRejected = values.find(value => value instanceof Error);
-          reject(firstRejected);
-        }
-      });
-  });
+  throw new Error('Not implemented');
 }
 
 /**
